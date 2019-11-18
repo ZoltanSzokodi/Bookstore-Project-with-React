@@ -1,0 +1,33 @@
+.Navbar {
+  height: 15rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+}
+
+.Navbar-logo-container {
+  height: 100%;
+  width: auto;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+  margin-left: 5rem;
+}
+
+.Navbar-logo_logo {
+  padding-right: 5rem;
+}
+
+.Navbar-links-container {
+  color: white;
+  font-size: 2rem;
+  margin-right: 5rem;
+}
+
+.Navbar-links-container a {
+  padding: 3rem;
+  text-decoration: none;
+}

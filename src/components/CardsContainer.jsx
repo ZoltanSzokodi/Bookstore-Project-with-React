@@ -1,17 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Card from './Card'
 import '../styles/CardsContainer.css'
 
-class CardsContainer extends Component {
-  render() {
-    return (
-      <div className="CardsContainer">
-        {this.props.books.map(book => (
-          <Card key={book.title} book={book} />
-        ))}
-      </div>
-    )
-  }
+function CardsContainer({ books }) {
+  return (
+    <div className="CardsContainer">
+      {books.map(book => (
+        <Card key={book.title} book={book} />
+      ))}
+    </div>
+  )
 }
+
 
 export default CardsContainer

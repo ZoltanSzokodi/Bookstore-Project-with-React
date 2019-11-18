@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
+import ContentWrapper from './components/ContentWrapper'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
 import BooksContainer from './components/CardsContainer'
+import Footer from './components/Footer'
 import axios from 'axios'
 import './styles/App.css'
 
@@ -26,9 +30,20 @@ class App extends Component {
     const { isLoaded, books } = this.state;
 
     if (!isLoaded) {
-      return <div>Loading...</div>
+      return (
+        <ContentWrapper>
+          <div className="Loader">Loading...</div>
+        </ContentWrapper>
+      )
     } else {
-      return <BooksContainer books={this.state.books} />
+      return (
+        <ContentWrapper>
+          <Navbar />
+          <Hero />
+          <BooksContainer books={books} />
+          <Footer />
+        </ContentWrapper>
+      )
     }
   }
 }
