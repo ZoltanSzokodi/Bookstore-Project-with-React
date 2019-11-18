@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ContentWrapper from './ContentWrapper'
+import Loader from './Loader'
 import Hero from './Hero'
 import BooksContainer from './CardsContainer'
 import axios from 'axios'
@@ -24,7 +24,7 @@ class Home extends Component {
   }
   render() {
     const { isLoaded, books } = this.state;
-    const loading = <div className="Loader">Loading...</div>;
+    const loading = <Loader />;
     const loaded = (
       <React.Fragment >
         <Hero />
