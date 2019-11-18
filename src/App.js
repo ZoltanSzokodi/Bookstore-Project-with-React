@@ -1,51 +1,29 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Home from './components/Home'
+import About from './components/About'
+import ShoppingCart from './components/ShoppingCart'
 import ContentWrapper from './components/ContentWrapper'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import BooksContainer from './components/CardsContainer'
 import Footer from './components/Footer'
-import axios from 'axios'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './styles/App.css'
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      books: [],
-      isLoaded: false
-    };
-  }
-
-  componentDidMount() {
-    axios.get("https://api.myjson.com/bins/zyv02")
-      .then(res => {
-        this.setState({
-          isLoaded: true,
-          books: res.data.books
-        })
-      })
-  }
-
-  render() {
-    const { isLoaded, books } = this.state;
-
-    if (!isLoaded) {
-      return (
-        <ContentWrapper>
-          <div className="Loader">Loading...</div>
-        </ContentWrapper>
-      )
-    } else {
-      return (
-        <ContentWrapper>
-          <Navbar />
-          <Hero />
-          <BooksContainer books={books} />
-          <Footer />
-        </ContentWrapper>
-      )
-    }
-  }
+function App() {
+  return (
+    <Router>
+      <ContentWrapper>
+        <Navbar />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/about" exact component={About} />
+          <Route path="/shopping" exact component={ShoppingCart} />
+        </Switch>
+        <Footer />
+      </ContentWrapper>
+    </Router>
+  )
 }
+
+
 
 export default App;

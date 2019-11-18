@@ -1,5 +1,45 @@
-.Hero {
-  background-color: tomato;
-  height: 100vh;
-  width: 100%;
+.hero {
+  /* background-image: linear-gradient(to bottom, #000000, #180d1c, #261431, #351947, #451e5e, #552277); */
+  background-image: linear-gradient(
+      to bottom,
+      rgb(0, 0, 0, 0.7),
+      rgb(24, 13, 28, 0.7),
+      rgb(38, 20, 49, 0.7),
+      rgb(53, 25, 71, 0.7),
+      rgb(69, 30, 94, 0.7),
+      rgb(85, 34, 119, 0.7)
+    ),
+    url(../img/pawel-czerwinski-l8DUam8vtbc-unsplash.jpg);
+  background-position: center;
+  height: 120vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 70%;
+  height: 35%;
+  padding: 3rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.hero-content h1 {
+  font-size: 3rem;
+}
+.hero-content_button {
+  width: 20rem;
+  padding: 1.5rem;
+  border: none;
+  border-radius: 5rem;
+  background-color: white;
+  color: #351947;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: bold;
+  font-family: inherit;
 }
