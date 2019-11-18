@@ -1,10 +1,22 @@
-.Navbar {
-  height: 15rem;
+/* .Navbar-start {
+  position: fixed;
+  height: 25rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: black;
+  background-color: transparent;
+} */
+
+.Navbar-scroll {
+  /* position: fixed; */
+  height: 10rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  z-index: 100;
 }
 
 .Navbar-logo-container {

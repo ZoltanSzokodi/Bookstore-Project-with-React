@@ -3,7 +3,7 @@ import '../styles/ContentWrapper.css'
 
 function ContentWrapper(props) {
   return (
-    <div className="ContentWrapper">
+    <div className="ContentWrapper animate-bottom">
       {props.children}
     </div>
   )
