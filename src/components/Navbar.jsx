@@ -14,7 +14,7 @@ class Navbar extends React.Component {
           <Link to="/">Home</Link>
           <Link to="/about">About us</Link>
           <Link to="#">Contact</Link>
-          <Link to="/shopping">Shopping Cart</Link>
+          <Link to="/favourites">Favourites <span>0</span></Link>
         </div>
       </nav>
     )
