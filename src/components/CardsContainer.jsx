@@ -2,11 +2,11 @@ import React from 'react'
 import Card from './Card'
 import '../styles/CardsContainer.css'
 
-function CardsContainer({ books }) {
+function CardsContainer(props) {
   return (
     <div className="CardsContainer">
-      {books.map(book => (
-        <Card key={book.title} book={book} />
+      {props.books.map((book, idx) => (
+        <Card key={book.title} idx={idx} book={book} onClick={props.onClick} />
       ))}
     </div>
   )
