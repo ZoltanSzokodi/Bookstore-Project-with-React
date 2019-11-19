@@ -9,7 +9,7 @@
 } */
 
 .Navbar-scroll {
-  /* position: fixed; */
+  position: fixed;
   height: 10rem;
   width: 100%;
   display: flex;
@@ -24,7 +24,7 @@
   width: auto;
   display: flex;
   align-items: center;
-  color: white;
+  /* color: white; */
   font-size: 2rem;
   margin-left: 5rem;
 }
@@ -34,7 +34,7 @@
 }
 
 .Navbar-links-container {
-  color: white;
+  /* color: white; */
   font-size: 2rem;
   margin-right: 5rem;
 }

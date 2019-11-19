@@ -6,7 +6,12 @@ function CardsContainer(props) {
   return (
     <div className="CardsContainer">
       {props.books.map((book, idx) => (
-        <Card key={book.title} idx={idx} book={book} onClick={props.onClick} />
+        <Card
+          key={book.title}
+          idx={idx}
+          book={book}
+          onClick={props.onClick}
+        />
       ))}
     </div>
   )

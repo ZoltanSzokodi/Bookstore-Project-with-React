@@ -14,29 +14,39 @@ class Home extends Component {
     this.toggleFavorite = this.toggleFavorite.bind(this);
   }
 
-  async componentDidMount() {
+  // -------------------------- FETCH DATA and INIT STATE -----------------------------
+
+  componentDidMount = async () => {
     let books = []
-    await axios.get("https://api.myjson.com/bins/zyv02")
-      .then(res => {
-        res.data.books.forEach(book => {
-          books.push({ ...book, isFavorite: false })
+    try {
+      await axios.get("https://api.myjson.com/bins/zyv02")
+        .then(res => {
+          res.data.books.forEach(book => {
+            books.push({ ...book, isFavorite: false })
+          })
         })
+      this.setState({
+        isLoaded: true,
+        books
       })
-    this.setState({
-      isLoaded: true,
-      books
-    })
-    console.log(this.state);
+      console.log(this.state);
+    } catch (err) {
+      console.log(err)
+    }
   }
 
-  toggleFavorite(index) {
+  // -------------------------- TOGGLE isFavorite STATE --------------------------------
+
+  toggleFavorite = index => {
     // console.log(index);
-    let booksCopy = this.state.books.slice()
-    booksCopy[index].isFavorite = !booksCopy[index].isFavorite
+    let books = this.state.books.slice()
+    books[index].isFavorite = !books[index].isFavorite
     this.setState({
-      books: booksCopy
+      books
     })
   }
+
+  // -------------------------- RENDER <Loader /> or <Home /> -----------------------------
 
   render() {
     const { isLoaded, books } = this.state;
