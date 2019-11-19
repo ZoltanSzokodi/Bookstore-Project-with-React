@@ -13,15 +13,21 @@ class Home extends Component {
     };
   }
 
-  componentDidMount() {
-    axios.get("https://api.myjson.com/bins/zyv02")
+  async componentDidMount() {
+    let books = []
+    await axios.get("https://api.myjson.com/bins/zyv02")
       .then(res => {
-        this.setState({
-          isLoaded: true,
-          books: res.data.books
+        res.data.books.forEach(book => {
+          books.push({ ...book, isFavorite: false })
         })
       })
+    this.setState({
+      isLoaded: true,
+      books
+    })
+    console.log(this.state);
   }
+
   render() {
     const { isLoaded, books } = this.state;
     const loading = <Loader />;

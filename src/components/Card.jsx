@@ -9,6 +9,7 @@ function Card({ book }) {
           <img src={book.cover} alt={book.title} />
         </div>
         <div className="flip-card-back">
+          <button className="flip-card-back-favbtn">X</button>
           <h2>{book.title}</h2>
           <a className="flip-card-back-btn"
             href={book.cover}
