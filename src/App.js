@@ -55,14 +55,19 @@ class App extends Component {
     })
   }
 
+  // -------------------------- RENDER <Loader /> or <Home /> -----------------------------
+
   render() {
-    const { isLoaded, books } = this.state;
+    const { isLoaded, books, favCount } = this.state;
 
     return (
       <Router>
         <ContentWrapper>
-          <Navbar />
+          <Navbar favCount={favCount} />
           <Switch>
+
+            {/* Note: I am using "render={fn...}" instead of "component={comp}" so that I am able to pass down props within the Routes */}
+
             <Route path="/" exact render={(props) => <Home {...props} isLoaded={isLoaded} books={books} onClick={this.toggleFavorite} />} />
             <Route path="/about" exact render={(props) => <About {...props} />} />
             <Route path="/favourites" exact render={(props) => <Favourites {...props} />} />

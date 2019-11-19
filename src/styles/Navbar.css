@@ -24,7 +24,6 @@
   width: auto;
   display: flex;
   align-items: center;
-  /* color: white; */
   font-size: 2rem;
   margin-left: 5rem;
 }
@@ -34,12 +33,36 @@
 }
 
 .Navbar-links-container {
-  /* color: white; */
+  display: flex;
+  align-items: center;
   font-size: 2rem;
   margin-right: 5rem;
 }
 
 .Navbar-links-container a {
-  padding: 3rem;
+  padding: 0 2rem;
   text-decoration: none;
+}
+
+.Navbar-links-container-favorites {
+  position: relative;
+}
+
+.Navbar-links-container-favorites_favcount {
+  position: absolute;
+  top: 3.5rem;
+  right: 0;
+  display: inline-block;
+  background-color: #f69aa0;
+  font-size: 1.3rem;
+  color: white;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.Navbar-links-container-favorites_logo {
+  height: 6rem;
+  width: 6rem;
 }

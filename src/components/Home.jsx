@@ -1,23 +1,19 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Loader from './Loader'
 import Hero from './Hero'
 import CardsContainer from './CardsContainer'
-// import axios from 'axios'
 
-class Home extends Component {
+// Note: Destructuring the props inside the arguments
 
-  // -------------------------- RENDER <Loader /> or <Home /> -----------------------------
+function Home({ books, onClick, isLoaded }) {
+  const loading = <Loader />;
+  const loaded = (
+    <React.Fragment >
+      <Hero />
+      <CardsContainer books={books} onClick={onClick} />
+    </React.Fragment >)
 
-  render() {
-    const loading = <Loader />;
-    const loaded = (
-      <React.Fragment >
-        <Hero />
-        <CardsContainer books={this.props.books} onClick={this.props.onClick} />
-      </React.Fragment >)
-
-    return !this.props.isLoaded ? loading : loaded
-  }
+  return !isLoaded ? loading : loaded
 }
 
 export default Home;
