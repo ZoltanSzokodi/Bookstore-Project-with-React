@@ -28,10 +28,10 @@
   backface-visibility: hidden;
 }
 
-.flip-card-front {
+/* .flip-card-front {
   background-color: #bbb;
   color: black;
-}
+} */
 
 .flip-card-front img {
   width: 30rem;
@@ -43,16 +43,21 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: white;
+  background-color: #f6e7ff;
   transform: rotateY(180deg);
 }
 
-.flip-card-back-btn {
+.flip-card-back h2 {
   font-size: 2rem;
+  margin: 2rem;
+}
+
+.flip-card-back-btn {
+  font-size: 1.5rem;
   text-decoration: none;
-  background-color: grey;
+  background-color: #451e5e;
   color: white;
-  padding: 1.5rem 2rem;
+  padding: 1rem 3rem;
   border-radius: 5rem;
 }
 

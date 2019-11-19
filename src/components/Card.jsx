@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/Card.css'
-import unlikeMe from '../img/unlikeMe.png'
+import unlikeMe from '../img/unlikeMeD.png'
 import likeMe from '../img/likeMe.png'
 
 class Card extends React.Component {

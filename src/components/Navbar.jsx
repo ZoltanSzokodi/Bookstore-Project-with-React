@@ -17,7 +17,10 @@ function Navbar({ favCount }) {
         <Link to="#">Contact</Link>
         <Link to="/favourites">
           <div className="Navbar-links-container-favorites">
-            <img src={FavouritesLogo} alt="favourites" className="Navbar-links-container-favorites_logo" />
+            <img
+              src={FavouritesLogo}
+              alt="favourites"
+              className="Navbar-links-container-favorites_logo" />
             <span className="Navbar-links-container-favorites_favcount">{favCount}</span>
           </div>
         </Link>
