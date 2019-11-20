@@ -16,7 +16,9 @@ class App extends Component {
     this.state = {
       books: [],
       isLoaded: false,
-      favCount: 0
+      favCount: 0,
+      shopCount: 0,
+      shoppingList: []
     };
   }
 
@@ -35,7 +37,7 @@ class App extends Component {
         isLoaded: true,
         books
       })
-      console.log(this.state);
+      // console.log(this.state);
     } catch (err) {
       console.log(err)
     }
@@ -43,11 +45,11 @@ class App extends Component {
 
   // -------------------------- TOGGLE isFavorite STATE --------------------------------
 
-  toggleFavorite = index => {
-    // console.log(index);
+  toggleFavorite = book => {
+    // console.log(book);
     let favCount = 0;
     let books = this.state.books.slice();
-    books[index].isFavorite = !books[index].isFavorite
+    book.isFavorite = !book.isFavorite
     books.forEach(book => book.isFavorite && favCount++)
     this.setState({
       books,
@@ -55,15 +57,31 @@ class App extends Component {
     })
   }
 
+  addToShoppingList = book => {
+    // console.log(book);
+    let shopCount = 0;
+    let shoppingList = this.state.shoppingList.slice();
+    shoppingList.push(book);
+    shoppingList.forEach(() => shopCount++)
+    this.setState({
+      shoppingList,
+      shopCount
+    })
+  }
+
   // -------------------------- RENDER <Loader /> or <Home /> -----------------------------
 
   render() {
-    const { isLoaded, books, favCount } = this.state;
+    const { isLoaded, books, favCount, shopCount } = this.state;
 
     return (
       <Router>
         <ContentWrapper>
-          <Navbar favCount={favCount} books={books} />
+          <Navbar
+            onClick={this.addToShoppingList}
+            favCount={favCount}
+            books={books}
+            shopCount={shopCount} />
           <Switch>
 
             {/* Note: I am using "render={fn...}" instead of "component={comp}" so that I am able to pass down props within the Routes */}

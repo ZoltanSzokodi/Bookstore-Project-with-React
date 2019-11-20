@@ -4,14 +4,16 @@ import unlikeMe from '../img/unlikeMeD.png'
 import likeMe from '../img/likeMe.png'
 
 class Card extends React.Component {
+
   toggleHeart(state) {
     if (state) return "heart-like"
     return "heart-unlike"
   }
+
   render() {
 
     const { cover, title, isFavorite } = this.props.book;
-    const { onClick, idx } = this.props;
+    const { onClick, book } = this.props;
 
     return (
 
@@ -28,7 +30,7 @@ class Card extends React.Component {
           {/* Note: Otherwise with a function component I would have to use an arrow function */}
 
           <div className="flip-card-back">
-            <button className="flip-card-back-favbtn" onClick={onClick.bind(this, idx)}>
+            <button className="flip-card-back-favbtn" onClick={onClick.bind(this, book)}>
               {isFavorite ? <img src={likeMe} alt="like-btn" /> : <img src={unlikeMe} alt="unlike-btn" />}
             </button>
             {/* <div className={isFavorite ? "heart-like" : "heart-unlike"} onClick={onClick.bind(this, idx)}></div> */}

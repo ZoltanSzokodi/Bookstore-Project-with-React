@@ -5,10 +5,9 @@ import '../styles/CardsContainer.css'
 function CardsContainer(props) {
   return (
     <div className="CardsContainer">
-      {props.books.map((book, idx) => (
+      {props.books.map(book => (
         <Card
           key={book.title}
-          idx={idx}
           book={book}
           onClick={props.onClick}
         />
