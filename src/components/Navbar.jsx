@@ -2,6 +2,7 @@ import React from 'react'
 import '../styles/Navbar.css'
 import { Link } from 'react-router-dom'
 import FavoritesLogo from '../img/favorites.png'
+import ShoppingLogo from '../img/shopping.png'
 
 function Navbar({ favCount, books }) {
 
@@ -26,12 +27,27 @@ function Navbar({ favCount, books }) {
               <span className="Navbar-links-container-favorites_favcount">{favCount}</span>
             </div>
           </Link>
-          <div className="dropdown-content">
+          <ul className="dropdown-content">
             {books.map(book => (
-              book.isFavorite && <div>{book.title}</div>
+              book.isFavorite && (
+                <li key={book.title} className="dropdown-content_li">
+                  {book.title}
+                  <button className="dropdown-content_btn">add to cart</button>
+                </li>
+              )
             ))}
-          </div>
+          </ul>
         </div>
+
+        <Link to="#">
+          <div className="Navbar-links-container-shopping">
+            <img
+              src={ShoppingLogo}
+              alt="shopping"
+              className="Navbar-links-container-shopping_logo" />
+            <span className="Navbar-links-container-shopping_shopcount">5</span>
+          </div>
+        </Link>
 
       </div>
     </nav>
