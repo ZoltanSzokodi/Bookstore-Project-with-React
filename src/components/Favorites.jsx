@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Favourites() {
+function Favorites() {
   return (
     <div>
       <h1>This is the Favourites!</h1>
@@ -8,4 +8,4 @@ function Favourites() {
   )
 }
 
-export default Favourites;
+export default Favorites;

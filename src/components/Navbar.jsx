@@ -1,9 +1,9 @@
 import React from 'react'
 import '../styles/Navbar.css'
 import { Link } from 'react-router-dom'
-import FavouritesLogo from '../img/favourites.png'
+import FavoritesLogo from '../img/favorites.png'
 
-function Navbar({ favCount }) {
+function Navbar({ favCount, books }) {
 
   return (
     <nav className="Navbar-scroll">
@@ -15,15 +15,24 @@ function Navbar({ favCount }) {
         <Link to="/">Home</Link>
         <Link to="/about">About us</Link>
         <Link to="#">Contact</Link>
-        <Link to="/favourites">
-          <div className="Navbar-links-container-favorites">
-            <img
-              src={FavouritesLogo}
-              alt="favourites"
-              className="Navbar-links-container-favorites_logo" />
-            <span className="Navbar-links-container-favorites_favcount">{favCount}</span>
+
+        <div className="dropdown">
+          <Link to="/favorites">
+            <div className="Navbar-links-container-favorites">
+              <img
+                src={FavoritesLogo}
+                alt="favorites"
+                className="Navbar-links-container-favorites_logo" />
+              <span className="Navbar-links-container-favorites_favcount">{favCount}</span>
+            </div>
+          </Link>
+          <div className="dropdown-content">
+            {books.map(book => (
+              book.isFavorite && <div>{book.title}</div>
+            ))}
           </div>
-        </Link>
+        </div>
+
       </div>
     </nav>
   )

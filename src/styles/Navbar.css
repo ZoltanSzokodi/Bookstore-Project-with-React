@@ -37,6 +37,7 @@
   align-items: center;
   font-size: 2rem;
   margin-right: 5rem;
+  height: 10rem;
 }
 
 .Navbar-links-container a {
@@ -65,4 +66,39 @@
 .Navbar-links-container-favorites_logo {
   height: 6rem;
   width: 6rem;
+}
+
+/* ------------------------------- DROPDOWN ------------------------------- */
+
+.dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* height: 10rem; */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 8.4rem;
+  background-color: #f1f1f1;
+  width: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content div {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content div:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }

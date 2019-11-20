@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Home from './components/Home'
 import About from './components/About'
-import Favourites from './components/Favourites'
+import Favorites from './components/Favorites'
 import ContentWrapper from './components/ContentWrapper'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -63,14 +63,14 @@ class App extends Component {
     return (
       <Router>
         <ContentWrapper>
-          <Navbar favCount={favCount} />
+          <Navbar favCount={favCount} books={books} />
           <Switch>
 
             {/* Note: I am using "render={fn...}" instead of "component={comp}" so that I am able to pass down props within the Routes */}
 
             <Route path="/" exact render={(props) => <Home {...props} isLoaded={isLoaded} books={books} onClick={this.toggleFavorite} />} />
             <Route path="/about" exact render={(props) => <About {...props} />} />
-            <Route path="/favourites" exact render={(props) => <Favourites {...props} />} />
+            <Route path="/favorites" exact render={(props) => <Favorites {...props} />} />
           </Switch>
           <Footer />
         </ContentWrapper>
