@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import Home from './components/Home'
 import About from './components/About'
-import Favorites from './components/Favorites'
+import Checkout from './components/Checkout'
 import ContentWrapper from './components/ContentWrapper'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './styles/App.css'
 import axios from 'axios'
+import { uuid } from 'uuidv4'
 
 
 class App extends Component {
@@ -17,7 +18,6 @@ class App extends Component {
       books: [],
       isLoaded: false,
       favCount: 0,
-      shopCount: 0,
       shoppingList: []
     };
   }
@@ -57,22 +57,25 @@ class App extends Component {
     })
   }
 
+  removeFromShoppingList = id => {
+    // console.log(id);
+    this.setState({
+      shoppingList: [...this.state.shoppingList.filter(item => item.id !== id)]
+    })
+  }
+
   addToShoppingList = book => {
     // console.log(book);
-    let shopCount = 0;
     let shoppingList = this.state.shoppingList.slice();
-    shoppingList.push(book);
-    shoppingList.forEach(() => shopCount++)
-    this.setState({
-      shoppingList,
-      shopCount
-    })
+    shoppingList.push({ ...book, id: uuid() });
+
+    this.setState({ shoppingList })
   }
 
   // -------------------------- RENDER <Loader /> or <Home /> -----------------------------
 
   render() {
-    const { isLoaded, books, favCount, shopCount } = this.state;
+    const { isLoaded, books, favCount, shoppingList } = this.state;
 
     return (
       <Router>
@@ -81,14 +84,16 @@ class App extends Component {
             onClick={this.addToShoppingList}
             favCount={favCount}
             books={books}
-            shopCount={shopCount} />
+            // shopCount={shopCount}
+            shoppingList={shoppingList}
+          />
           <Switch>
 
             {/* Note: I am using "render={fn...}" instead of "component={comp}" so that I am able to pass down props within the Routes */}
 
             <Route path="/" exact render={(props) => <Home {...props} isLoaded={isLoaded} books={books} onClick={this.toggleFavorite} />} />
             <Route path="/about" exact render={(props) => <About {...props} />} />
-            <Route path="/favorites" exact render={(props) => <Favorites {...props} />} />
+            <Route path="/checkout" exact render={(props) => <Checkout {...props} shoppingList={shoppingList} onDelete={this.removeFromShoppingList} />} />
           </Switch>
           <Footer />
         </ContentWrapper>
@@ -96,9 +101,5 @@ class App extends Component {
     )
   }
 }
-
-
-
-
 
 export default App;

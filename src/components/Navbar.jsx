@@ -6,7 +6,7 @@ import ShoppingLogo from '../img/shopping.png'
 
 class Navbar extends Component {
   render() {
-    const { favCount, books, onClick, shopCount } = this.props
+    const { favCount, books, onClick, shoppingList } = this.props
     return (
       <nav className="Navbar-scroll">
         <div className="Navbar-logo-container">
@@ -21,15 +21,15 @@ class Navbar extends Component {
           {/* --------------------------- DROPDOWN FOR FAVORITES ------------------------------- */}
 
           <div className="dropdown">
-            <Link to="/favorites">
-              <div className="Navbar-links-container-favorites">
-                <img
-                  src={FavoritesLogo}
-                  alt="favorites"
-                  className="Navbar-links-container-favorites_logo" />
-                <span className="Navbar-links-container-favorites_favcount">{favCount}</span>
-              </div>
-            </Link>
+
+            <div className="Navbar-links-container-favorites">
+              <img
+                src={FavoritesLogo}
+                alt="favorites"
+                className="Navbar-links-container-favorites_logo" />
+              <span className="Navbar-links-container-favorites_favcount">{favCount}</span>
+            </div>
+
             <ul className="dropdown-content">
               {books.map(book => (
                 book.isFavorite && (
@@ -44,13 +44,13 @@ class Navbar extends Component {
 
           {/* ------------------------ SHOPPING CART -------------------------- */}
 
-          <Link to="#">
+          <Link to="/checkout">
             <div className="Navbar-links-container-shopping">
               <img
                 src={ShoppingLogo}
                 alt="shopping"
                 className="Navbar-links-container-shopping_logo" />
-              <span className="Navbar-links-container-shopping_shopcount">{shopCount}</span>
+              <span className="Navbar-links-container-shopping_shopcount">{shoppingList.length}</span>
             </div>
           </Link>
 

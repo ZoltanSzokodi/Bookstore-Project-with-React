@@ -81,6 +81,7 @@
   flex-direction: column;
   justify-content: center;
   height: 100%;
+  cursor: pointer;
 }
 
 .dropdown-content {
