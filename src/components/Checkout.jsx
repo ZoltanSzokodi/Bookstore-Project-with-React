@@ -11,7 +11,6 @@ const styles = {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "flex-start"
-    /* padding-top: 0rem, */
   },
   "Shopping-list": {
     display: "flex",

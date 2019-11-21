@@ -37,7 +37,7 @@ class Search extends Component {
     const { classes } = this.props
     return (
       <div className={classes.search}>
-        <input id="search" type="text" name="search" placeholder="Search..." />
+        <input type="text" name="search" placeholder="Search..." />
       </div>
     )
   }
