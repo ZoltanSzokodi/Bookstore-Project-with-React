@@ -105,7 +105,10 @@ class Checkout extends Component {
                   <img className={classes["Shopping-list-item_cover"]} src={item.cover} alt={item.title} />
                   <div className={classes["Shopping-list-item_title"]}>{item.title}</div>
                   <div className={classes["Shopping-list-item_price"]}>{item.price}</div>
-                  <button className={classes["Shopping-list-item_button"]} onClick={onDelete.bind(this, item.id)}>remove</button>
+                  <button className={classes["Shopping-list-item_button"]}
+                    onClick={onDelete.bind(this, item.id)}>
+                    remove
+                  </button>
                 </div>
               ))}
             </div>

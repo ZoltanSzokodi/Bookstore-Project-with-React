@@ -34,10 +34,10 @@ const styles = {
 
 class Search extends Component {
   render() {
-    const { classes } = this.props
+    const { classes, onChange } = this.props
     return (
       <div className={classes.search}>
-        <input type="text" name="search" placeholder="Search..." />
+        <input type="text" name="search" placeholder="Search..." onChange={onChange} />
       </div>
     )
   }

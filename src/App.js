@@ -15,6 +15,7 @@ class App extends Component {
     super(props);
     this.state = {
       books: [],
+      filtered: [],
       isLoaded: false,
       favCount: 0,
       shoppingList: []
@@ -35,9 +36,10 @@ class App extends Component {
         })
       this.setState({
         isLoaded: true,
-        books
+        books,
+        filtered: books
       })
-      console.log(this.state);
+      // console.log(this.state);
     } catch (err) {
       console.log(err)
     }
@@ -46,7 +48,6 @@ class App extends Component {
   // -------------------------- TOGGLE isFavorite STATE --------------------------------
 
   toggleFavorite = book => {
-    // console.log(book);
     let favCount = 0;
     let books = this.state.books.slice();
     book.isFavorite = !book.isFavorite
@@ -58,18 +59,51 @@ class App extends Component {
   }
 
   removeFromShoppingList = id => {
-    // console.log(id);
     this.setState({
       shoppingList: [...this.state.shoppingList.filter(item => item.id !== id)]
     })
   }
 
   addToShoppingList = book => {
-    // console.log(book);
     let shoppingList = this.state.shoppingList.slice();
     shoppingList.push({ ...book, id: uuid() });
 
     this.setState({ shoppingList })
+  }
+
+  handleChange = (e) => {
+    // Variable to hold the original version of the list
+    let currentList = [];
+    // Variable to hold the filtered list before putting into state
+    let newList = [];
+
+    // If the search bar isn't empty
+    if (e.target.value !== "") {
+      // Assign the original list to currentList
+      currentList = this.state.filtered;
+
+      // Use .filter() to determine which items should be displayed
+      // based on the search terms
+      newList = currentList.filter(item => {
+        // change current item to lowercase
+        const lc = item.title.toLowerCase();
+        // change search term to lowercase
+        const filter = e.target.value.toLowerCase();
+        // check to see if the current list item includes the search term
+        // If it does, it will be added to newList. Using lowercase eliminates
+        // issues with capitalization in search terms and search content
+        return lc.includes(filter);
+      });
+    } else {
+      // If the search bar is empty, set newList to original task list
+      newList = this.state.filtered;
+    }
+    // Set the filtered state based on what our rules added to newList
+    this.setState({
+      filtered: newList
+    });
+    console.log(this.state.filtered);
+
   }
 
   // -------------------------- RENDER <Loader /> or <Home /> -----------------------------
@@ -90,7 +124,7 @@ class App extends Component {
 
             {/* Note: I am using "render={fn...}" instead of "component={comp}" so that I am able to pass down props within the Routes */}
 
-            <Route path="/" exact render={(props) => <Home {...props} isLoaded={isLoaded} books={books} onClick={this.toggleFavorite} />} />
+            <Route path="/" exact render={(props) => <Home {...props} isLoaded={isLoaded} books={this.state.filtered} onClick={this.toggleFavorite} onChange={this.handleChange} />} />
 
             <Route path="/checkout" exact render={(props) => <Checkout {...props} shoppingList={shoppingList} onDelete={this.removeFromShoppingList} />} />
           </Switch>
