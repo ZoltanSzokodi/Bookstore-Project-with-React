@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { uuid } from 'uuidv4';
 import { withStyles } from '@material-ui/core/styles';
-// import PropTypes from 'prop-types';
+import sadFace from '../img/sad.png'
 
 const styles = {
   Shopping: {
@@ -26,11 +26,60 @@ const styles = {
     alignItems: "center",
     width: "100%",
     marginBottom: "1rem",
-    backgroundColor: "#f3f3f3"
+    backgroundColor: "#f6e7ff",
+    borderRadius: "5px"
   },
   "Shopping-list-item_cover": {
     height: "10rem",
-    width: "auto"
+    width: "auto",
+    borderRadius: "5px"
+  },
+  "Shopping-list-item_button": {
+    height: "3.5rem",
+    width: "auto",
+    padding: "1rem",
+    marginRight: "2rem",
+    fontSize: "1.5rem",
+    fontWeight: "bold",
+    color: "white",
+    backgroundColor: "#451e5e",
+    border: "none",
+    borderRadius: "50rem",
+    textAlign: "center",
+    lineHeight: "1.5rem",
+    cursor: "pointer",
+    boxShadow: "2px 2px 4px grey",
+    transition: "0.3s",
+    "&:hover": {
+      boxShadow: "4px 4px 6px grey",
+      transform: "scale(1.1)",
+      transition: "0.3s"
+    },
+    "&:focus": {
+      outline: "none"
+    }
+  },
+  empty: {
+    backgroundImage: "linear-gradient(to bottom,rgb(0, 0, 0, 0.7),rgb(24, 13, 28, 0.7),rgb(38, 20, 49, 0.7),rgb(53, 25, 71, 0.7),rgb(69, 30, 94, 0.7),rgb(85, 34, 119, 0.7))",
+    backgroundPosition: "center",
+    height: "120vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  "empty-message": {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    width: "70%",
+    height: "35%",
+    padding: "3rem",
+    color: "white",
+    backgroundColor: "rgba(0, 0, 0, 0.2)",
+    "& h1": {
+      fontSize: "3rem"
+    }
   }
 }
 
@@ -40,19 +89,28 @@ class Checkout extends Component {
     const { shoppingList, onDelete, classes } = this.props;
     return (
       <React.Fragment>
-        <div className={classes.Shopping}>
-          <div className={classes["Shopping-list"]}>
-            {shoppingList.map(item => (
-              <div className={classes["Shopping-list-item"]} key={uuid()}>
-                <img className={classes["Shopping-list-item_cover"]} src={item.cover} alt={item.title} />
-                <div className={classes["Shopping-list-item_title"]}>{item.title}</div>
-                <div className={classes["Shopping-list-item_quantity"]}>quantity: 1</div>
-                <div className={classes["Shopping-list-item_price"]}>$19.99</div>
-                <button onClick={onDelete.bind(this, item.id)} >remove</button>
-              </div>
-            ))}
+        {shoppingList.length === 0 && (
+          <div className={classes.empty}>
+            <div className={classes["empty-message"]}>
+              <h1>your shopping cart is empty</h1><img src={sadFace} alt="sad-face" />
+            </div>
           </div>
-        </div>
+        )}
+
+        {shoppingList.length > 0 && (
+          <div className={classes.Shopping}>
+            <div className={classes["Shopping-list"]}>
+              {shoppingList.map(item => (
+                <div className={classes["Shopping-list-item"]} key={uuid()}>
+                  <img className={classes["Shopping-list-item_cover"]} src={item.cover} alt={item.title} />
+                  <div className={classes["Shopping-list-item_title"]}>{item.title}</div>
+                  <div className={classes["Shopping-list-item_price"]}>{item.price}</div>
+                  <button className={classes["Shopping-list-item_button"]} onClick={onDelete.bind(this, item.id)}>remove</button>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </React.Fragment >
     )
   }
