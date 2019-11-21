@@ -1,19 +1,9 @@
-/* .Navbar-start {
-  position: fixed;
-  height: 25rem;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: transparent;
-} */
-
-.Navbar-scroll {
+.Navbar {
   position: fixed;
   height: 10rem;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   background-color: white;
   z-index: 100;
@@ -25,18 +15,18 @@
   display: flex;
   align-items: center;
   font-size: 2rem;
-  margin-left: 5rem;
 }
 
-.Navbar-logo_logo {
-  padding-right: 5rem;
+.Navbar-logo_name {
+  text-decoration: none;
+  font-family: "Lobster", cursive;
+  font-size: 4rem;
 }
 
 .Navbar-links-container {
   display: flex;
   align-items: center;
   font-size: 2rem;
-  margin-right: 5rem;
   height: 10rem;
 }
 

@@ -3,18 +3,22 @@ import '../styles/Navbar.css'
 import { Link } from 'react-router-dom'
 import FavoritesLogo from '../img/favorites.png'
 import ShoppingLogo from '../img/shopping.png'
+import UserLogo from '../img/user.png'
 
 class Navbar extends Component {
   render() {
     const { favCount, books, onClick, shoppingList } = this.props
     return (
-      <nav className="Navbar-scroll">
+      <nav className="Navbar">
+        <div className="Navbar-user-container">
+          <img src={UserLogo} className="Navbar-logo_logo" alt="user-logo" />
+        </div>
+
         <div className="Navbar-logo-container">
-          <Link to="/">
-            <img src="https://img.icons8.com/clouds/100/000000/book.png" className="Navbar-logo_logo" alt="librify-logo" />
+          <Link to="/" className="Navbar-logo_name">
+            Librify
           </Link>
 
-          <div className="Navbar-logo_name">Librify</div>
         </div>
         <div className="Navbar-links-container">
 
