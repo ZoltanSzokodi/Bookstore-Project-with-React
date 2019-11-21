@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { uuid } from 'uuidv4';
 import { withStyles } from '@material-ui/core/styles';
 import sadFace from '../img/sad.png'
@@ -83,44 +83,37 @@ const styles = {
   }
 }
 
-class Checkout extends Component {
+function Checkout({ shoppingList, onDelete, classes }) {
 
-  render() {
-    const { shoppingList, onDelete, classes } = this.props;
-    return (
-      <React.Fragment>
-        {shoppingList.length === 0 && (
-          <div className={classes.empty}>
-            <div className={classes["empty-message"]}>
-              <h1>your shopping cart is empty</h1><img src={sadFace} alt="sad-face" />
-            </div>
+  return (
+    <React.Fragment>
+      {shoppingList.length === 0 && (
+        <div className={classes.empty}>
+          <div className={classes["empty-message"]}>
+            <h1>your shopping cart is empty</h1><img src={sadFace} alt="sad-face" />
           </div>
-        )}
+        </div>
+      )}
 
-        {shoppingList.length > 0 && (
-          <div className={classes.Shopping}>
-            <div className={classes["Shopping-list"]}>
-              {shoppingList.map(item => (
-                <div className={classes["Shopping-list-item"]} key={uuid()}>
-                  <img className={classes["Shopping-list-item_cover"]} src={item.cover} alt={item.title} />
-                  <div className={classes["Shopping-list-item_title"]}>{item.title}</div>
-                  <div className={classes["Shopping-list-item_price"]}>{item.price}</div>
-                  <button className={classes["Shopping-list-item_button"]}
-                    onClick={onDelete.bind(this, item.id)}>
-                    remove
+      {shoppingList.length > 0 && (
+        <div className={classes.Shopping}>
+          <div className={classes["Shopping-list"]}>
+            {shoppingList.map(item => (
+              <div className={classes["Shopping-list-item"]} key={uuid()}>
+                <img className={classes["Shopping-list-item_cover"]} src={item.cover} alt={item.title} />
+                <div className={classes["Shopping-list-item_title"]}>{item.title}</div>
+                <div className={classes["Shopping-list-item_price"]}>{item.price}</div>
+                <button className={classes["Shopping-list-item_button"]}
+                  onClick={() => onDelete(item.id)}>
+                  remove
                   </button>
-                </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        )}
-      </React.Fragment >
-    )
-  }
+        </div>
+      )}
+    </React.Fragment >
+  )
 }
-
-// Checkout.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
 
 export default withStyles(styles)(Checkout);

@@ -18,7 +18,7 @@ class Navbar extends Component {
 
           <div className="Navbar-logo-container">
             <Link to="/" className="Navbar-logo_name">
-              Librify
+              librify app
           </Link>
 
           </div>

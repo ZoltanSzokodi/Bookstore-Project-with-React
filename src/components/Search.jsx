@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
@@ -32,15 +32,12 @@ const styles = {
   }
 }
 
-class Search extends Component {
-  render() {
-    const { classes, onChange } = this.props
-    return (
-      <div className={classes.search}>
-        <input type="text" name="search" placeholder="Search..." onChange={onChange} />
-      </div>
-    )
-  }
+function Search({ classes, onChange }) {
+  return (
+    <div className={classes.search}>
+      <input type="text" name="search" placeholder="Search..." onChange={onChange} />
+    </div>
+  )
 }
 
 export default withStyles(styles)(Search);

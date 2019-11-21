@@ -45,7 +45,7 @@ class App extends Component {
     }
   }
 
-  // -------------------------- TOGGLE isFavorite STATE --------------------------------
+  // -------------------------- TOGGLE isFavorite STATE ----------------------------
 
   toggleFavorite = book => {
     let favCount = 0;
@@ -58,11 +58,15 @@ class App extends Component {
     })
   }
 
+  // ---------------------------- DELETE FROM CART ---------------------------------
+
   removeFromShoppingList = id => {
     this.setState({
       shoppingList: [...this.state.shoppingList.filter(item => item.id !== id)]
     })
   }
+
+  // ---------------------------- MOVE FAV TO CART ---------------------------------
 
   addToShoppingList = book => {
     let shoppingList = this.state.shoppingList.slice();
@@ -70,6 +74,8 @@ class App extends Component {
 
     this.setState({ shoppingList })
   }
+
+  // ----------------------------- HANDLE SEARCH -----------------------------------
 
   handleChange = (e) => {
     // Variable to hold the original version of the list
@@ -80,7 +86,7 @@ class App extends Component {
     // If the search bar isn't empty
     if (e.target.value !== "") {
       // Assign the original list to currentList
-      currentList = this.state.filtered;
+      currentList = this.state.books;
 
       // Use .filter() to determine which items should be displayed
       // based on the search terms
@@ -96,20 +102,19 @@ class App extends Component {
       });
     } else {
       // If the search bar is empty, set newList to original task list
-      newList = this.state.filtered;
+      newList = this.state.books;
     }
     // Set the filtered state based on what our rules added to newList
     this.setState({
       filtered: newList
     });
     console.log(this.state.filtered);
-
   }
 
   // -------------------------- RENDER <Loader /> or <Home /> -----------------------------
 
   render() {
-    const { isLoaded, books, favCount, shoppingList } = this.state;
+    const { isLoaded, books, favCount, shoppingList, filtered } = this.state;
 
     return (
       <Router>
@@ -120,14 +125,16 @@ class App extends Component {
             books={books}
             shoppingList={shoppingList}
           />
+
+          {/* --------------------------------ROUTES -------------------------------- */}
+
           <Switch>
-
             {/* Note: I am using "render={fn...}" instead of "component={comp}" so that I am able to pass down props within the Routes */}
+            <Route path="/" exact render={props => <Home {...props} isLoaded={isLoaded} books={filtered} onClick={this.toggleFavorite} onChange={this.handleChange} />} />
 
-            <Route path="/" exact render={(props) => <Home {...props} isLoaded={isLoaded} books={this.state.filtered} onClick={this.toggleFavorite} onChange={this.handleChange} />} />
-
-            <Route path="/checkout" exact render={(props) => <Checkout {...props} shoppingList={shoppingList} onDelete={this.removeFromShoppingList} />} />
+            <Route path="/checkout" exact render={props => <Checkout {...props} shoppingList={shoppingList} onDelete={this.removeFromShoppingList} />} />
           </Switch>
+
           <Footer />
         </ContentWrapper>
       </Router >
