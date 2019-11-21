@@ -12,11 +12,10 @@ class Card extends React.Component {
 
   render() {
 
-    const { cover, title, isFavorite } = this.props.book;
+    const { cover, title, price, isFavorite } = this.props.book;
     const { onClick, book } = this.props;
 
     return (
-
       // -------------------------- FRONT OF CARD -----------------------------
 
       <div className="flip-card">
@@ -33,8 +32,8 @@ class Card extends React.Component {
             <button className="flip-card-back-favbtn" onClick={onClick.bind(this, book)}>
               {isFavorite ? <img src={likeMe} alt="like-btn" /> : <img src={unlikeMe} alt="unlike-btn" />}
             </button>
-            {/* <div className={isFavorite ? "heart-like" : "heart-unlike"} onClick={onClick.bind(this, idx)}></div> */}
             <h2>{title}</h2>
+            <h2>{price}</h2>
             <a className="flip-card-back-btn"
               href={cover}
               data-fancybox="images"

@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import axios from 'axios'
+import { uuid } from 'uuidv4'
 import Home from './components/Home'
-import About from './components/About'
 import Checkout from './components/Checkout'
 import ContentWrapper from './components/ContentWrapper'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './styles/App.css'
-import axios from 'axios'
-import { uuid } from 'uuidv4'
 
 
 class App extends Component {
@@ -30,14 +29,15 @@ class App extends Component {
       await axios.get("https://api.myjson.com/bins/zyv02")
         .then(res => {
           res.data.books.forEach(book => {
-            books.push({ ...book, isFavorite: false })
+            let randomPrice = (Math.floor(Math.random() * (20 - 10 + 1)) + 9.99).toFixed(2);
+            books.push({ ...book, isFavorite: false, price: `$${randomPrice}` })
           })
         })
       this.setState({
         isLoaded: true,
         books
       })
-      // console.log(this.state);
+      console.log(this.state);
     } catch (err) {
       console.log(err)
     }
@@ -84,7 +84,6 @@ class App extends Component {
             onClick={this.addToShoppingList}
             favCount={favCount}
             books={books}
-            // shopCount={shopCount}
             shoppingList={shoppingList}
           />
           <Switch>
@@ -92,7 +91,7 @@ class App extends Component {
             {/* Note: I am using "render={fn...}" instead of "component={comp}" so that I am able to pass down props within the Routes */}
 
             <Route path="/" exact render={(props) => <Home {...props} isLoaded={isLoaded} books={books} onClick={this.toggleFavorite} />} />
-            <Route path="/about" exact render={(props) => <About {...props} />} />
+
             <Route path="/checkout" exact render={(props) => <Checkout {...props} shoppingList={shoppingList} onDelete={this.removeFromShoppingList} />} />
           </Switch>
           <Footer />

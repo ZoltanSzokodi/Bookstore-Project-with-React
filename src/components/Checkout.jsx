@@ -3,7 +3,6 @@ import { uuid } from 'uuidv4';
 import { withStyles } from '@material-ui/core/styles';
 // import PropTypes from 'prop-types';
 
-
 const styles = {
   Shopping: {
     minHeight: "100vh",
@@ -37,6 +36,7 @@ const styles = {
 }
 
 class Checkout extends Component {
+
   render() {
     const { shoppingList, onDelete, classes } = this.props;
     return (
@@ -50,8 +50,8 @@ class Checkout extends Component {
                 <div className={classes["Shopping-list-item_quantity"]}>quantity: 1</div>
                 <div className={classes["Shopping-list-item_price"]}>$19.99</div>
                 <button onClick={onDelete.bind(this, item.id)} >remove</button>
-              </div>)
-            )}
+              </div>
+            ))}
           </div>
         </div>
       </React.Fragment >
