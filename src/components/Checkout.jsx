@@ -17,22 +17,35 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
     padding: "20rem 0",
-    width: "60%",
+    width: "100%",
     fontSize: "2rem"
   },
   "Shopping-list-item": {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "flex-start",
     alignItems: "center",
-    width: "100%",
+    width: "50%",
     marginBottom: "1rem",
     backgroundColor: "#f6e7ff",
     borderRadius: "5px"
   },
   "Shopping-list-item_cover": {
-    height: "10rem",
+    height: "15rem",
     width: "auto",
     borderRadius: "5px"
+  },
+  "Shopping-list-item-center-container": {
+    display: "flex",
+    width: "100%",
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+  "Shopping-list-item-middle": {
+    height: "15rem",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-evenly",
+    marginLeft: "5rem"
   },
   "Shopping-list-item_button": {
     height: "3.5rem",
@@ -101,12 +114,17 @@ function Checkout({ shoppingList, onDelete, classes }) {
             {shoppingList.map(item => (
               <div className={classes["Shopping-list-item"]} key={uuid()}>
                 <img className={classes["Shopping-list-item_cover"]} src={item.cover} alt={item.title} />
-                <div className={classes["Shopping-list-item_title"]}>{item.title}</div>
-                <div className={classes["Shopping-list-item_price"]}>{item.price}</div>
-                <button className={classes["Shopping-list-item_button"]}
-                  onClick={() => onDelete(item.id)}>
-                  remove
-                  </button>
+                <div className={classes["Shopping-list-item-center-container"]}>
+                  <div className={classes["Shopping-list-item-middle"]}>
+                    <div className={classes["Shopping-list-item_title"]}>{item.title}</div>
+                    <div className={classes["Shopping-list-item_price"]}>{item.price}</div>
+                  </div>
+                  <button className={classes["Shopping-list-item_button"]}
+                    onClick={() => onDelete(item.id)}>
+                    remove
+                </button>
+
+                </div>
               </div>
             ))}
           </div>
