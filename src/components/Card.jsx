@@ -1,7 +1,7 @@
 import React from 'react'
-import '../styles/Card.css'
 import unlikeMe from '../img/unlikeMeD.png'
 import likeMe from '../img/likeMe.png'
+import '../styles/Card.css'
 
 function Card(props) {
 
