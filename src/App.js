@@ -48,13 +48,24 @@ class App extends Component {
   // -------------------------- TOGGLE isFavorite STATE ----------------------------
 
   toggleFavorite = book => {
-    let favCount = 0;
-    let books = this.state.books.slice();
-    book.isFavorite = !book.isFavorite
-    books.forEach(book => book.isFavorite && favCount++)
-    this.setState({
-      books,
-      favCount
+    // let favCount = 0;
+    // let books = this.state.books.slice();
+    // book.isFavorite = !book.isFavorite
+    // books.forEach(book => book.isFavorite && favCount++)
+    // this.setState({
+    //   books,
+    //   favCount
+    // })
+    this.setState(prevState => {
+      let selectedBook = book;
+      let favCount = 0;
+      let books = [...prevState.books];
+      selectedBook.isFavorite = !selectedBook.isFavorite;
+      books.forEach(book => book.isFavorite && favCount++)
+      return {
+        books,
+        favCount
+      }
     })
   }
 

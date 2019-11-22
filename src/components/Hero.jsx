@@ -1,6 +1,5 @@
 import React from 'react'
 import '../styles/Hero.css'
-import Logo from '../img/fav.png'
 import Javascript from '../img/javascript.png'
 import css from '../img/css.png'
 import html from '../img/html.png'
