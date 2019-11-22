@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import FavoritesLogo from '../img/favorites.png'
 import ShoppingLogo from '../img/shopping.png'
 import UserLogo from '../img/user.png'
+import SuccessLogo from '../img/success.png'
 import '../styles/Navbar.css'
 
 function Navbar({ favCount, books, onClick, shoppingList }) {
@@ -39,7 +40,19 @@ function Navbar({ favCount, books, onClick, shoppingList }) {
                 book.isFavorite && (
                   <li key={book.title} className="dropdown-content_li">
                     <div>{book.title}</div>
-                    <button className="dropdown-content_btn" onClick={() => onClick(book)}>+</button>
+
+                    <button
+                      data-fancybox
+                      data-animation-duration="700"
+                      data-src="#animatedModal"
+                      className="dropdown-content_btn"
+                      onClick={() => onClick(book)}>+</button>
+
+                    <div style={{ display: "none", textAlign: "center", padding: "3rem" }} id="animatedModal" className="animated-modal">
+                      <h2>Success!</h2>
+                      <img src={SuccessLogo} alt="success-logo" />
+                      <p>Book added to shopping cart. </p>
+                    </div>
                   </li>
                 )
               ))}

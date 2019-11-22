@@ -8,7 +8,7 @@ const styles = {
     alignItems: "center",
     width: " 100%",
     height: "25vh",
-    backgroundColor: "black",
+    backgroundColor: "#180d1c",
     borderRadius: "15rem",
     transform: "translateY(-50%)",
     "& input": {

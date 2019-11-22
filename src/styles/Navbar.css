@@ -1,6 +1,6 @@
 .Navbar {
   position: fixed;
-  height: 10rem;
+  height: 8rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -37,15 +37,17 @@
   align-items: center;
   justify-content: space-between;
   font-size: 2rem;
-  height: 10rem;
+  height: 8rem;
 }
 
 .Navbar-links-container a {
-  padding: 0 2rem;
   text-decoration: none;
 }
 
 /* ------------------------------- FAVORITES / SHOPPING -------------------------------- */
+.Navbar-links-container-favorites {
+  margin: 0 2rem;
+}
 
 .Navbar-links-container-favorites,
 .Navbar-links-container-shopping {
@@ -89,7 +91,7 @@
   display: none;
   width: max-content;
   position: absolute;
-  top: 10rem;
+  top: 8rem;
   right: -5rem;
   background-color: white;
 }
@@ -138,4 +140,49 @@
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+/* ------------------------------- ANIMATED MODAL ------------------------------------ */
+/* Note: some styles are inline! */
+
+/* Start state */
+.animated-modal {
+  width: 40rem;
+  border-radius: 4px;
+  overflow: hidden;
+  font-size: 2rem;
+  color: white;
+  transform: translateY(-50px);
+  transition: all 0.7s;
+  background-image: linear-gradient(to bottom, #d55ead, #543093);
+}
+
+.animated-modal h2,
+.animated-modal p {
+  transform: translateY(-50px);
+  opacity: 0;
+
+  transition-property: transform, opacity;
+  transition-duration: 0.4s;
+}
+
+/* Final state */
+.fancybox-slide--current .animated-modal,
+.fancybox-slide--current .animated-modal h2,
+.fancybox-slide--current .animated-modal p {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Reveal content with different delays */
+.fancybox-slide--current .animated-modal h2 {
+  transition-delay: 0.1s;
+}
+
+.fancybox-slide--current .animated-modal p {
+  transition-delay: 0.3s;
+}
+
+.fancybox-close-small:after {
+  color: white;
 }
