@@ -41,6 +41,11 @@
   font-size: 1.6rem;
   font-weight: bold;
   font-family: inherit;
+  transition: 0.3s ease-in-out;
 }
 
-/* --------------------------------- HERO BTN -------------------------------------- */
+.hero-content_button:hover {
+  transform: scale(1.1);
+  background-color: #f6e7ff;
+  color: #d55ead;
+}
