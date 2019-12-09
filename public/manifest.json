@@ -1,0 +1,15 @@
+{
+  "short_name": "librify app",
+  "name": "librify app - made simple",
+  "icons": [
+    {
+      "src": "./src/img/fav.png",
+      "sizes": "100x100",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#351947",
+  "background_color": "#f6e7ff"
+}
